@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import RoundView from './pages/RoundView';
@@ -11,6 +12,10 @@ import Leaderboard from './pages/Leaderboard';
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAdminAuthenticated') === 'true';
   return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 function App() {

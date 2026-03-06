@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from '../api/client';
 import { Trophy, Medal, Award, AlertCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
