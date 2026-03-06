@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://gdg-ironman-admin.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://gdg-ironman-admin-latest.onrender.com';
 
 const client = axios.create({
     baseURL: API_URL,
