@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, User, KeyRound, ShieldAlert } from 'lucide-react';
 
@@ -8,6 +8,11 @@ const Login = () => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+
+    // Clear any previous authentication when loading the Login page
+    useEffect(() => {
+        localStorage.removeItem('isAdminAuthenticated');
+    }, []);
 
     const handleLogin = (e) => {
         e.preventDefault();

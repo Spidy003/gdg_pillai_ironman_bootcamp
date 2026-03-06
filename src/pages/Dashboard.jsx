@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
-import { Layers, ShieldCheck, Trophy, Target } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Layers, ShieldCheck, Trophy, Target, LogOut } from 'lucide-react';
 
 const Dashboard = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('isAdminAuthenticated');
+        navigate('/login');
+    };
+
     const rounds = [
         { id: 2, title: 'Round 2', desc: 'Code Evaluation', icon: <Layers size={24} /> },
         { id: 3, title: 'Round 3', desc: 'System Design', icon: <ShieldCheck size={24} /> },
@@ -11,7 +18,15 @@ const Dashboard = () => {
 
     return (
         <div className="container">
-            <div className="page-header">
+            <div className="page-header" style={{ position: 'relative' }}>
+                <button
+                    onClick={handleLogout}
+                    className="btn btn-primary"
+                    style={{ position: 'absolute', right: 0, top: 0, background: 'rgba(248, 81, 73, 0.2)', color: '#f85149', border: '1px solid rgba(248, 81, 73, 0.4)' }}
+                >
+                    <LogOut size={18} />
+                    Logout
+                </button>
                 <h1 className="page-title">Admin Judge Dashboard</h1>
                 <p className="page-subtitle">Select a round below to view team submissions and provide judgments.</p>
             </div>
